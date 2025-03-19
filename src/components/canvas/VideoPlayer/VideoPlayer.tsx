@@ -17,11 +17,11 @@ export const VideoPlayer: FC<VideoPlayerProps> = ({ title, description, source, 
         <div className={classNames('py-6')}>
           {description}
         </div>
-        <div className="border-dashed border-4 border-gray-300 p-5 text-gray-300">
+        <div className="text-gray-300 mb-30">
           {source === 'YouTube' && (
             <iframe
-              width="560"
-              height="315"
+              width="100%"
+              height="500px"
               src={`https://www.youtube.com/embed/${id}`}
               title="YouTube video player"
               frameborder="0"
