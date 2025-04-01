@@ -1,14 +1,14 @@
+/* eslint-disable tailwindcss/no-unnecessary-arbitrary-value */
 'use client';
 import React, { FC, useEffect, useState } from 'react';
+import Image from 'next/image';
 import { UniformRichText, UniformText } from '@uniformdev/canvas-next-rsc/component';
 import { MicrosoftAuthenticatorProps } from '.';
-import Image from 'next/image';
-import Button from '@/components/ui/Button';
 
 const MicrosoftAuthenticator: FC<MicrosoftAuthenticatorProps> = ({ component, context }) => {
   const [microsoftAuthenticator, setMicrosoftAuthenticator] = useState<{
     type: string;
-    parameters?: { [key: string]: any };
+    parameters?: { [key: string]: unknown };
   } | null>(null);
 
   const [microsoftAuthenticatorUrl, setMicrosoftAuthenticatorUrl] = useState('');
@@ -27,16 +27,16 @@ const MicrosoftAuthenticator: FC<MicrosoftAuthenticatorProps> = ({ component, co
   }, [microsoftAuthenticator]);
 
   return (
-    <div className="mx-auto py-20 px-6 flex flex-col gap-10 lg:gap-20 w-full max-w-7xl">
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 py-20 lg:gap-20">
       <UniformText
         context={context}
         component={component}
         parameterId="title"
         as="h2"
-        className="text-5xl lg:text-6xl font-light"
+        className="text-5xl font-light lg:text-6xl"
       />
       <div className="flex gap-12">
-        <div className="px-4 lg:px-8 hidden md:block">
+        <div className="hidden px-4 md:block lg:px-8">
           <Image
             src={typeof microsoftAuthenticatorUrl === 'string' ? microsoftAuthenticatorUrl : ''}
             alt="test"
@@ -46,7 +46,7 @@ const MicrosoftAuthenticator: FC<MicrosoftAuthenticatorProps> = ({ component, co
           />
         </div>
 
-        <div className="flex flex-col gap-6 w-[100%] lg:w-[50%]">
+        <div className="flex w-[100%] flex-col gap-6 lg:w-[50%]">
           <UniformText
             context={context}
             component={component}
@@ -60,12 +60,12 @@ const MicrosoftAuthenticator: FC<MicrosoftAuthenticatorProps> = ({ component, co
             component={component}
             parameterId="descriptionText"
             as="p"
-            className="font-semibold leading-[2.1] richtext"
+            className="richtext font-semibold leading-[2.1]"
           />
 
           <div className="flex justify-end gap-4">
             <button className="border border-blue-400 px-6 py-2">Skip</button>
-            <button className="outline-none bg-gradient-to-b to-blue-500 from-blue-400 text-white px-6 py-2">
+            <button className="bg-gradient-to-b from-blue-400 to-blue-500 px-6 py-2 text-white outline-none">
               Continue
             </button>
           </div>
