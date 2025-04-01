@@ -1,5 +1,5 @@
-import { ComponentProps } from '@uniformdev/canvas-next-rsc/component';
 import { DataWithProperties } from '@uniformdev/canvas';
+import { ComponentProps } from '@uniformdev/canvas-next-rsc/component';
 import { TextParameters } from '@/components/canvas/Text/parameters';
 import CustomBreadcrumbComponent from './CustomBreadcrumbs';
 

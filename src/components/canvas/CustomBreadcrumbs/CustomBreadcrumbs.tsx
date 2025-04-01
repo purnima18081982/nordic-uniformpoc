@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
-import { CustomBreadcrumbComponentLink, CustomBreadcrumbComponentProps } from '.';
 import { flattenValues, LinkParamValue } from '@uniformdev/canvas';
-import { formatUniformLink } from '@/utils/routing';
-
-import { cn } from '@/utils/styling';
-import { getSeparator } from './helper';
-import BaseText from '@/components/ui/Text';
 import BaseButton, { ButtonVariant } from '@/components/ui/Button';
+import BaseText from '@/components/ui/Text';
+import { formatUniformLink } from '@/utils/routing';
+import { cn } from '@/utils/styling';
+import { CustomBreadcrumbComponentLink, CustomBreadcrumbComponentProps } from '.';
+
+import { getSeparator } from './helper';
 
 const CustomBreadcrumbComponent: FC<CustomBreadcrumbComponentProps> = ({
   separator,

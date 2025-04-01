@@ -1,30 +1,30 @@
 /* eslint-disable tailwindcss/no-unnecessary-arbitrary-value */
 'use client';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import Image from 'next/image';
 import { UniformRichText, UniformText } from '@uniformdev/canvas-next-rsc/component';
 import { MicrosoftAuthenticatorProps } from '.';
 
+interface PageContent {
+  type: string;
+  parameters?: {
+    descriptionImage?: {
+      value: Array<{
+        fields: {
+          url: {
+            value: string;
+          };
+        };
+      }>;
+    };
+  };
+}
+
 const MicrosoftAuthenticator: FC<MicrosoftAuthenticatorProps> = ({ component, context }) => {
-  const [microsoftAuthenticator, setMicrosoftAuthenticator] = useState<{
-    type: string;
-    parameters?: { [key: string]: unknown };
-  } | null>(null);
+  const pageContent = context?.composition?.slots?.pageContent as PageContent[];
 
-  const [microsoftAuthenticatorUrl, setMicrosoftAuthenticatorUrl] = useState('');
-
-  useEffect(() => {
-    const microsoftAuthenticatorContent =
-      context?.composition?.slots?.pageContent?.filter(ele => ele.type === 'microsoftAuthenticator') ?? [];
-    setMicrosoftAuthenticator(microsoftAuthenticatorContent[0] || null);
-  }, [context]);
-
-  useEffect(() => {
-    const microsoftAuthenticatorImageUrl =
-      microsoftAuthenticator?.parameters?.descriptionImage?.value[0]?.fields['url']?.value;
-
-    setMicrosoftAuthenticatorUrl(microsoftAuthenticatorImageUrl || '');
-  }, [microsoftAuthenticator]);
+  const microsoftAuthenticatorUrl = pageContent?.find((ele: PageContent) => ele.type === 'microsoftAuthenticator')
+    ?.parameters?.descriptionImage?.value[0]?.fields?.url?.value;
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 py-20 lg:gap-20">
