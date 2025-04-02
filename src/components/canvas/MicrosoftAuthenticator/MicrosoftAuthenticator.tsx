@@ -21,6 +21,7 @@ interface PageContent {
 }
 
 const MicrosoftAuthenticator: FC<MicrosoftAuthenticatorProps> = ({ component, context }) => {
+  // This is for the image url
   const pageContent = context?.composition?.slots?.pageContent as PageContent[];
 
   const microsoftAuthenticatorUrl = pageContent?.find((ele: PageContent) => ele.type === 'microsoftAuthenticator')
