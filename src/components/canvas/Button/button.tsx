@@ -84,7 +84,12 @@ export const Button: FC<ButtonProps> = ({
       icon={<Icon />}
       iconPosition={iconPosition}
     >
-      <UniformText placeholder="Button text goes here" parameterId="text" component={component} context={context} />
+      <UniformText
+        placeholder="Button text goes here"
+        parameterId={`${text}`}
+        component={component}
+        context={context}
+      />
     </BaseButton>
   );
 };
