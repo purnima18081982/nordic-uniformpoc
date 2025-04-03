@@ -11,7 +11,7 @@ export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = (
 }) => {
   const myButtonStyles: ButtonProps = {
     buttonColor: 'blue-500',
-    textColor: 'white',
+    textColor: 'black',
     textSize: 'sm',
     hoverButtonColor: 'blue-700',
     hoverTextColor: 'gray-100',
