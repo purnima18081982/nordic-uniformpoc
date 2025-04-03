@@ -17,7 +17,7 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({ separator, links, size, colo
   if (!itemToDisplay.length) {
     return null;
   }
-//test
+  //test
   return (
     <ul
       className={cn('flex items-center', {
