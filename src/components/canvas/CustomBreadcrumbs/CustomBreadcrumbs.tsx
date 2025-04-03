@@ -23,7 +23,6 @@ const CustomBreadcrumbComponent: FC<CustomBreadcrumbComponentProps> = ({
     }, []) || [];
 
   if (!itemToDisplay.length) {
-    // ToDo: Add breadcrumbs placeholder
     return null;
   }
 
