@@ -11,7 +11,7 @@ export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = (
 }) => {
   const myButtonStyles: ButtonProps = {
     buttonColor: 'blue-500',
-    textColor: 'white',
+    textColor: 'black',
     textSize: 'sm',
     hoverButtonColor: 'blue-700',
     hoverTextColor: 'gray-100',
@@ -23,8 +23,8 @@ export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = (
   return (
     <div className="w-1/2 py-10 text-2xl">
       <UniformText context={context} component={component} parameterId="name" as="h1" />
-      <UniformText context={context} component={component} parameterId="description1" as="p" />
-      <UniformText context={context} component={component} parameterId="description2" as="p" />
+      <UniformText context={context} component={component} parameterId="description1" as="div" />
+      <UniformText context={context} component={component} parameterId="description2" as="div" />
       <br />
       <div className="mb-4">
         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
