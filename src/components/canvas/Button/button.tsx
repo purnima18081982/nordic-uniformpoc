@@ -85,10 +85,10 @@ export const Button: FC<ButtonProps> = ({
       iconPosition={iconPosition}
     >
       <UniformText
-        placeholder="Button text goes here"
-        parameterId={`${text}`}
+        placeholder={text || 'Button text goes here'}
         component={component}
         context={context}
+        parameterId={text || 'Button text goes here'}
       />
     </BaseButton>
   );
