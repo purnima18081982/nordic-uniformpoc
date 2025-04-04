@@ -25,7 +25,6 @@ export const SocialMediaSection: FC<SocialMediaSectionProps> = ({ component, con
       link: (component?.parameters?.slacklogin?.value as { path: string })?.path,
     },
   ];
-  console.info(context?.composition, 'button');
 
   const handleClick = (socialLink: string) => {
     // Ensure the URL is absolute
