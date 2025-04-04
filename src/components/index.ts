@@ -7,6 +7,7 @@ import { MicrosoftAuthenticatorMappings } from './canvas/MicrosoftAuthenticator'
 import { signupStepMappings } from './canvas/SignupStep';
 import { SocialMediaSectionmaping } from './canvas/SocialMediaSection';
 import { videoPlayerMappings } from './canvas/VideoPlayer';
+import { whatWeOfferMappings } from './canvas/WhatWeOffer';
 
 const componentsMapping: ComponentMapping = {
   ...cskComponentsMapping,
@@ -17,6 +18,7 @@ const componentsMapping: ComponentMapping = {
   customBreadcrumbComponent: { component: customBreadcrumbsMapping.customBreadcrumbs },
   microsoftAuthenticator: { component: MicrosoftAuthenticatorMappings.microsoftAuthenticator },
   socialmediasection: { component: SocialMediaSectionmaping.SocialMediaSection },
+  whatweoffer: { component: whatWeOfferMappings.WhatWeOffer },
 };
 
 export const componentResolver = createComponentResolver(componentsMapping);
