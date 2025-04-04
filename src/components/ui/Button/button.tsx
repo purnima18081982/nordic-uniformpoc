@@ -65,6 +65,7 @@ export const Button: FC<ButtonProps> = ({
     [`hover:decoration-${buttonColor}`]: buttonColor,
     '!underline': href === isActive,
   });
+
   return (
     <ButtonWrapper
       href={href}

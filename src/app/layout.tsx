@@ -7,6 +7,7 @@ import '@/styles/colors.css';
 import '@/styles/dimensions.css';
 import '@/styles/fonts.css';
 import '@/styles/borders.css';
+import '@/styles/index.scss';
 import { customFontVariables } from '@/fonts';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
