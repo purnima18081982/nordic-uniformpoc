@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable tailwindcss/no-unnecessary-arbitrary-value */
 'use client';
 import React, { FC } from 'react';
@@ -28,13 +29,13 @@ const MicrosoftAuthenticator: FC<MicrosoftAuthenticatorProps> = ({ component, co
     ?.parameters?.descriptionImage?.value[0]?.fields?.url?.value;
 
   return (
-    <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 py-20 lg:gap-20">
+    <div className="microsoftAuthenticator mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 py-20 lg:gap-20">
       <UniformText
         context={context}
         component={component}
         parameterId="title"
         as="h2"
-        className="text-5xl font-light lg:text-6xl"
+        className="microsoftAuthenticator__title"
       />
       <div className="flex gap-12">
         <div className="hidden px-4 md:block lg:px-8">
