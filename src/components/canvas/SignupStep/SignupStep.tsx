@@ -3,11 +3,15 @@ import { UniformText } from '@uniformdev/canvas-next-rsc/component';
 import { ButtonProps } from '@/components/ui/Button'; // Import ButtonProps from the correct location
 import Button from '@/components/ui/Button';
 import { SignupStepProps } from '.';
+import NordicButton from '../NordicButton';
 
 export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = ({
   component,
   context,
   buttonProps,
+  slots,
+  slotIndex,
+  slotName,
 }) => {
   const myButtonStyles: ButtonProps = {
     buttonColor: 'blue-500',
@@ -41,6 +45,13 @@ export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = (
       <Button {...(buttonProps || myButtonStyles)} className="px-3 py-1">
         <UniformText context={context} component={component} parameterId="buttontext" />
       </Button>
+      <NordicButton
+        component={component}
+        context={context}
+        slots={slots}
+        slotName={slotName}
+        slotIndex={slotIndex}
+      />
     </div>
   );
 };
