@@ -24,12 +24,10 @@ export const NordicButton: FC<ButtonProps> = ({
   hoverTextColor,
   className,
   onClick,
-  text,
 }) => {
-  console.log('commmmmmmm', component, context);
   const href = formatUniformLink(link);
 
-  const isEditorPreviewMode = context.previewMode === 'editor' && context?.isContextualEditing;
+  //const isEditorPreviewMode = context.previewMode === 'editor' && context?.isContextualEditing;
 
   const iconParameters = useMemo(() => {
     const [resolvedImage] = resolveAsset(icon);
@@ -61,7 +59,7 @@ export const NordicButton: FC<ButtonProps> = ({
     );
   };
 
-  const hasContent = !!text || !!iconParameters;
+  //const hasContent = !!text || !!iconParameters;
 
   //if (!hasContent && !isEditorPreviewMode) return null;
 

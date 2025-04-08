@@ -45,13 +45,7 @@ export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = (
       <Button {...(buttonProps || myButtonStyles)} className="px-3 py-1">
         <UniformText context={context} component={component} parameterId="buttontext" />
       </Button>
-      <NordicButton
-        component={component}
-        context={context}
-        slots={slots}
-        slotName={slotName}
-        slotIndex={slotIndex}
-      />
+      <NordicButton component={component} context={context} slots={slots} slotName={slotName} slotIndex={slotIndex} />
     </div>
   );
 };
