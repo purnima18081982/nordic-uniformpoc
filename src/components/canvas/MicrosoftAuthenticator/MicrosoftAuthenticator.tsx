@@ -23,19 +23,19 @@ interface PageContent {
 
 const MicrosoftAuthenticator: FC<MicrosoftAuthenticatorProps> = ({ component, context }) => {
   // This is for the image url
-  const pageContent = context?.composition?.slots?.pageContent as PageContent[];
 
-  const microsoftAuthenticatorUrl = pageContent?.find((ele: PageContent) => ele.type === 'microsoftAuthenticator')
-    ?.parameters?.descriptionImage?.value[0]?.fields?.url?.value;
+  const microsoftAuthenticatorUrl = Array.isArray(component?.parameters?.descriptionImage?.value)
+    ? component.parameters.descriptionImage.value[0]?.fields?.url?.value
+    : undefined;
 
   return (
-    <div className="microsoftAuthenticator mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 py-20 lg:gap-20">
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 py-20 lg:gap-20">
       <UniformText
         context={context}
         component={component}
         parameterId="title"
         as="h2"
-        className="microsoftAuthenticator__title"
+        className="text-3xl font-bold lg:text-4xl"
       />
       <div className="flex gap-12">
         <div className="hidden px-4 md:block lg:px-8">

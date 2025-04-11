@@ -21,13 +21,31 @@ export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = (
   };
 
   return (
-    <div className="w-1/2 py-10 text-2xl">
-      <UniformText context={context} component={component} parameterId="name" as="h1" />
-      <UniformText context={context} component={component} parameterId="description1" as="div" />
-      <UniformText context={context} component={component} parameterId="description2" as="div" />
+    <div className="w-full py-10">
+      <UniformText
+        context={context}
+        component={component}
+        parameterId="name"
+        as="h1"
+        className="text-5xl font-medium leading-[3.5rem]"
+      />
+      <UniformText
+        context={context}
+        component={component}
+        parameterId="description1"
+        as="div"
+        className="text-5xl font-medium leading-[3.5rem]"
+      />
+      <UniformText
+        context={context}
+        component={component}
+        parameterId="description2"
+        as="div"
+        className="text-5xl font-medium leading-[3.5rem]"
+      />
       <br />
-      <div className="mb-4">
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+      <div className="mb-3">
+        <label htmlFor="email" className="block text-sm font-bold text-gray-700 ">
           <UniformText context={context} component={component} parameterId="labelname" as="span" />
         </label>
         <input
@@ -38,7 +56,10 @@ export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = (
           placeholder="Enter your work email"
         />
       </div>
-      <Button {...(buttonProps || myButtonStyles)} className="px-3 py-1">
+      <Button
+        {...(buttonProps || myButtonStyles)}
+        className="bg-blue-500 px-4 py-2 text-base text-white transition-all duration-300 ease-in-out hover:bg-blue-600"
+      >
         <UniformText context={context} component={component} parameterId="buttontext" />
       </Button>
     </div>
