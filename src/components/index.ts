@@ -5,6 +5,7 @@ import { customBreadcrumbsMapping } from './canvas/Breadcrumbs';
 import { NordicContainerComponentMapping } from './canvas/container';
 import { helloWorldMappings } from './canvas/HelloWorld';
 import { MicrosoftAuthenticatorMappings } from './canvas/MicrosoftAuthenticator';
+import { nordicButtonMappings } from './canvas/NordicButton';
 import { signupStepMappings } from './canvas/SignupStep';
 import { SocialMediaSectionmaping } from './canvas/SocialMediaSection';
 import { videoPlayerMappings } from './canvas/VideoPlayer';
@@ -20,6 +21,7 @@ const componentsMapping: ComponentMapping = {
   microsoftAuthenticator: { component: MicrosoftAuthenticatorMappings.microsoftAuthenticator },
   socialmediasection: { component: SocialMediaSectionmaping.SocialMediaSection },
   whatweoffer: { component: whatWeOfferMappings.WhatWeOffer },
+  nordicbutton: { component: nordicButtonMappings.nordicButton },
   nordicContainer: { component: NordicContainerComponentMapping.nordicContainerComponent },
   nordicFlexItem: { component: NordicContainerComponentMapping.nordicContainerItemComponent },
 };
