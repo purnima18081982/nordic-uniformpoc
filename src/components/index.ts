@@ -2,6 +2,7 @@ import createComponentResolver, { ComponentMapping } from '@uniformdev/csk-compo
 import { cskComponentsMapping } from '@/components/canvas';
 import { customComponentsMapping } from '@/components/custom-canvas';
 import { customBreadcrumbsMapping } from './canvas/Breadcrumbs';
+import { NordicContainerComponentMapping } from './canvas/container';
 import { helloWorldMappings } from './canvas/HelloWorld';
 import { MicrosoftAuthenticatorMappings } from './canvas/MicrosoftAuthenticator';
 import { nordicButtonMappings } from './canvas/NordicButton';
@@ -21,6 +22,8 @@ const componentsMapping: ComponentMapping = {
   socialmediasection: { component: SocialMediaSectionmaping.SocialMediaSection },
   whatweoffer: { component: whatWeOfferMappings.WhatWeOffer },
   nordicbutton: { component: nordicButtonMappings.nordicButton },
+  nordicContainer: { component: NordicContainerComponentMapping.nordicContainerComponent },
+  nordicFlexItem: { component: NordicContainerComponentMapping.nordicContainerItemComponent },
 };
 
 export const componentResolver = createComponentResolver(componentsMapping);
