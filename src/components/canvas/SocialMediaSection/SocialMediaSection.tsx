@@ -53,6 +53,7 @@ export const SocialMediaSection: FC<SocialMediaSectionProps> = ({ component, con
             border={'border-2 border-black'}
             icon={[
               {
+                _name: 'icon',
                 type: 'image',
                 _id: `unique-id-${index}`,
                 fields: {
