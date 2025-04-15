@@ -25,10 +25,10 @@ export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = (
   };
 
   return (
-    <div className="w-full py-10 text-2xl">
-      <UniformText context={context} component={component} parameterId="name" as="h1" />
-      <UniformText context={context} component={component} parameterId="description1" as="div" />
-      <UniformText context={context} component={component} parameterId="description2" as="div" />
+    <div className="w-full py-4">
+      <UniformText context={context} component={component} parameterId="name" as="h1" className="text-4xl" />
+      <UniformText context={context} component={component} parameterId="description1" as="div" className="text-4xl" />
+      <UniformText context={context} component={component} parameterId="description2" as="div" className="text-4xl" />
       <br />
       <div className="mb-4">
         <label htmlFor="email" className="block text-sm font-medium text-gray-700">

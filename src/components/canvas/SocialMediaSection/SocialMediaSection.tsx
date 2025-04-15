@@ -33,9 +33,9 @@ export const SocialMediaSection: FC<SocialMediaSectionProps> = ({ component, con
     window.open(absoluteUrl, '_self');
   };
   return (
-    <div className="w-1/2 py-10 text-2xl">
+    <div className="w-full py-10 text-2xl">
       <UniformText context={context} component={component} parameterId="title" as="h1" />
-      <div className="flex w-1/2 items-center justify-between gap-4 py-10 text-2xl">
+      <div className="flex w-full flex-wrap items-center gap-4 py-5 text-2xl">
         {buttonConfigs.map((config, index) => (
           <Button
             key={index}
