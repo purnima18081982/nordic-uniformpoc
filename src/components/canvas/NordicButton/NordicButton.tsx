@@ -1,6 +1,6 @@
 import { FC, useMemo } from 'react';
 import { UniformText } from '@uniformdev/canvas-next-rsc/component';
-import BaseButton, { ButtonProps as BaseButtonProps } from '@/components/ui/Button';
+import BaseButton, { ButtonProps as BaseButtonProps } from '@/components/ui/NordicButton';
 import BaseImage from '@/components/ui/Image';
 import { resolveAsset } from '@/utils/assets';
 import { formatUniformLink } from '@/utils/routing';
