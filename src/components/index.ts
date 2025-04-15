@@ -8,6 +8,7 @@ import { signupStepMappings } from './canvas/SignupStep';
 import { SocialMediaSectionmaping } from './canvas/SocialMediaSection';
 import { videoPlayerMappings } from './canvas/VideoPlayer';
 import { whatWeOfferMappings } from './canvas/WhatWeOffer';
+import { Notificationmailmaping } from './canvas/NotificationMail';
 
 const componentsMapping: ComponentMapping = {
   ...cskComponentsMapping,
@@ -19,6 +20,7 @@ const componentsMapping: ComponentMapping = {
   microsoftAuthenticator: { component: MicrosoftAuthenticatorMappings.microsoftAuthenticator },
   socialmediasection: { component: SocialMediaSectionmaping.SocialMediaSection },
   whatweoffer: { component: whatWeOfferMappings.WhatWeOffer },
+  notificationmail: { component: Notificationmailmaping.Notificationmail },
 };
 
 export const componentResolver = createComponentResolver(componentsMapping);
