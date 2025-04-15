@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-sync-scripts */
+/* eslint-disable react/jsx-no-comment-textnodes */
 import { ReactNode } from 'react';
 import classNames from 'classnames';
 import { ThemeProvider as NextThemeProvider } from 'next-themes';
@@ -13,7 +15,10 @@ import { customFontVariables } from '@/fonts';
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head><script src="https://cdn.tailwindcss.com"></script></head>
+      <head>
+        // eslint-disable-next-line @next/next/no-sync-scripts
+        <script src="https://cdn.tailwindcss.com"></script>
+      </head>
       <body className={customFontVariables}>
         <div className={classNames('flex flex-col mx-1 md:mx-5')}>
           <NextThemeProvider attribute="class" defaultTheme="light" enableSystem>
