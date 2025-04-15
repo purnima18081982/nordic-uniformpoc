@@ -20,7 +20,7 @@ export const Container = (props: ContainerProps) => {
         className={classNames(
           'flex',
           'w-full',
-          props.flexDirection,
+          `flex-col lg-${props.flexDirection}`,
           props.justifyContent,
           props.alignItems,
           `gap-${props.flexGap}`
