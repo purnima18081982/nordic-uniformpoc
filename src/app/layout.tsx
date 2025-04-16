@@ -16,7 +16,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        // eslint-disable-next-line @next/next/no-sync-scripts
         <script src="https://cdn.tailwindcss.com"></script>
       </head>
       <body className={customFontVariables}>
