@@ -15,9 +15,10 @@ import { customFontVariables } from '@/fonts';
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* <head>
-        <script src="https://cdn.tailwindcss.com"></script>
-      </head> */}
+      <head>
+        {/* <script src="https://cdn.tailwindcss.com"></script> */}
+        <link href="/dist/output.css" rel="stylesheet" />
+      </head>
       <body className={customFontVariables}>
         <div className={classNames('flex flex-col mx-1 md:mx-5')}>
           <NextThemeProvider attribute="class" defaultTheme="light" enableSystem>
