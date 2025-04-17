@@ -57,7 +57,7 @@ export default {
     './src/**/*.{html,js,ts,jsx,tsx,scss}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/styles/**/*.{scss}',
+    './src/styles/**/*.scss',
     './node_modules/@uniformdev/csk-components/dist/content/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   safelist,

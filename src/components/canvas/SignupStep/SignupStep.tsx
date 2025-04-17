@@ -3,11 +3,15 @@ import { UniformText } from '@uniformdev/canvas-next-rsc/component';
 import { ButtonProps } from '@/components/ui/Button'; // Import ButtonProps from the correct location
 import Button from '@/components/ui/Button';
 import { SignupStepProps } from '.';
+import NordicButton from '../NordicButton';
 
 export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = ({
   component,
   context,
   buttonProps,
+  slots,
+  slotIndex,
+  slotName,
 }) => {
   const myButtonStyles: ButtonProps = {
     buttonColor: 'blue-500',
@@ -21,10 +25,10 @@ export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = (
   };
 
   return (
-    <div className="w-1/2 py-10 text-2xl">
-      <UniformText context={context} component={component} parameterId="name" as="h1" />
-      <UniformText context={context} component={component} parameterId="description1" as="div" />
-      <UniformText context={context} component={component} parameterId="description2" as="div" />
+    <div className="w-full py-4">
+      <UniformText context={context} component={component} parameterId="name" as="h1" className="text-4xl" />
+      <UniformText context={context} component={component} parameterId="description1" as="div" className="text-4xl" />
+      <UniformText context={context} component={component} parameterId="description2" as="div" className="text-4xl" />
       <br />
       <div className="mb-4">
         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -41,6 +45,7 @@ export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = (
       <Button {...(buttonProps || myButtonStyles)} className="px-3 py-1">
         <UniformText context={context} component={component} parameterId="buttontext" />
       </Button>
+      <NordicButton component={component} context={context} slots={slots} slotName={slotName} slotIndex={slotIndex} />
     </div>
   );
 };
