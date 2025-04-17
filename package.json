@@ -33,6 +33,7 @@
     "uniform:publish": "uniform context manifest publish"
   },
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.4",
     "@tailwindcss/postcss": "^4.1.1",
     "@uniformdev/canvas-next-rsc": "^20.8.1",
     "@uniformdev/csk-components": "^6.0.22-alpha.1",
