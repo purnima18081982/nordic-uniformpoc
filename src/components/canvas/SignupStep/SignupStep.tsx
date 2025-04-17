@@ -1,29 +1,9 @@
 import { FC } from 'react';
-import { UniformText } from '@uniformdev/canvas-next-rsc/component';
+import { UniformSlot, UniformText } from '@uniformdev/canvas-next-rsc/component';
 import { ButtonProps } from '@/components/ui/Button'; // Import ButtonProps from the correct location
-import Button from '@/components/ui/Button';
 import { SignupStepProps } from '.';
-import NordicButton from '../NordicButton';
 
-export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = ({
-  component,
-  context,
-  buttonProps,
-  slots,
-  slotIndex,
-  slotName,
-}) => {
-  const myButtonStyles: ButtonProps = {
-    buttonColor: 'blue-500',
-    textColor: 'black',
-    textSize: 'sm',
-    hoverButtonColor: 'blue-700',
-    hoverTextColor: 'gray-100',
-    size: '3',
-    textWeight: 'normal',
-    border: 'border-1 border-blue-700',
-  };
-
+export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = ({ component, context, slots }) => {
   return (
     <div className="w-full py-4">
       <UniformText context={context} component={component} parameterId="name" as="h1" className="text-4xl" />
@@ -42,10 +22,8 @@ export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = (
           placeholder="Enter your work email"
         />
       </div>
-      <Button {...(buttonProps || myButtonStyles)} className="px-3 py-1">
-        <UniformText context={context} component={component} parameterId="buttontext" />
-      </Button>
-      <NordicButton component={component} context={context} slots={slots} slotName={slotName} slotIndex={slotIndex} />
+      {/* Continue button */}
+      <UniformSlot data={component} context={context} slot={slots.submitButton} />
     </div>
   );
 };
