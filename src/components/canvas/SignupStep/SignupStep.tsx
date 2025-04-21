@@ -1,15 +1,28 @@
-import { FC } from 'react';
+//how to pass onclick in unform slot
+'use client';
+
+import { FC, useState } from 'react';
 import { UniformSlot, UniformText } from '@uniformdev/canvas-next-rsc/component';
-import { ButtonProps } from '@/components/ui/Button'; // Import ButtonProps from the correct location
 import { SignupStepProps } from '.';
+import PasswordField from './PasswordField';
 import Input from '../Input/Input';
 
-export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = ({ component, context, slots }) => {
+export const SignupStep: FC<SignupStepProps> = ({ component, context, slots }) => {
+  const [showPasswordField, setShowPasswordField] = useState(false);
+
+  const handleContinueClick = () => {
+    setShowPasswordField(true);
+  };
+
+  const handleLoginSubmit = () => {
+    //console.log('Login submitted');
+  };
+
   return (
-    <div className="w-full py-4">
-      <UniformText context={context} component={component} parameterId="name" as="h1" className="text-4xl" />
-      <UniformText context={context} component={component} parameterId="description1" as="div" className="text-4xl" />
-      <UniformText context={context} component={component} parameterId="description2" as="div" className="text-4xl" />
+    <div className="w-full py-10 text-2xl">
+      <UniformText context={context} component={component} parameterId="name" as="h1" />
+      <UniformText context={context} component={component} parameterId="description1" as="div" />
+      <UniformText context={context} component={component} parameterId="description2" as="div" />
       <br />
       <div className="mb-4">
         <Input
@@ -40,8 +53,20 @@ export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = (
           placeholder="Enter your work email"
         />
       </div>
-      {/* Continue button */}
-      <UniformSlot data={component} context={context} slot={slots.submitButton} />
+
+      {showPasswordField && (
+        <PasswordField
+          onSubmit={handleLoginSubmit}
+          context={context}
+          component={component}
+          slots={slots}
+          slotName={undefined}
+          slotIndex={undefined}
+        />
+      )}
+      <div onClick={handleContinueClick}>
+        {!showPasswordField && <UniformSlot data={component} context={context} slot={slots.submitButton} />}
+      </div>
     </div>
   );
 };
