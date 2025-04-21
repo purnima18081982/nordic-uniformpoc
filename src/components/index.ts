@@ -4,6 +4,7 @@ import { customComponentsMapping } from '@/components/custom-canvas';
 import { customBreadcrumbsMapping } from './canvas/Breadcrumbs';
 import { NordicContainerComponentMapping } from './canvas/container';
 import { helloWorldMappings } from './canvas/HelloWorld';
+import { NordicInputComponentMapping } from './canvas/Input';
 import { MicrosoftAuthenticatorMappings } from './canvas/MicrosoftAuthenticator';
 import { nordicButtonMappings } from './canvas/NordicButton';
 import { signupStepMappings } from './canvas/SignupStep';
@@ -24,6 +25,7 @@ const componentsMapping: ComponentMapping = {
   nordicbutton: { component: nordicButtonMappings.nordicButton },
   nordicContainer: { component: NordicContainerComponentMapping.nordicContainerComponent },
   nordicFlexItem: { component: NordicContainerComponentMapping.nordicContainerItemComponent },
+  nordicInput: { component: NordicInputComponentMapping.nordicInputComponent },
 };
 
 export const componentResolver = createComponentResolver(componentsMapping);

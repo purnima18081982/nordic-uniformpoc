@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { UniformSlot, UniformText } from '@uniformdev/canvas-next-rsc/component';
 import { ButtonProps } from '@/components/ui/Button'; // Import ButtonProps from the correct location
 import { SignupStepProps } from '.';
+import Input from '../Input/Input';
 
 export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = ({ component, context, slots }) => {
   return (
@@ -11,9 +12,26 @@ export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = (
       <UniformText context={context} component={component} parameterId="description2" as="div" className="text-4xl" />
       <br />
       <div className="mb-4">
+        <Input
+          name="firstName"
+          id="firstName"
+          label="First Name"
+          placeholder="Enter First Name"
+          type="text"
+          required={true}
+          defaultValue={undefined}
+          disabled={false}
+          component={component}
+          context={context}
+          slots={slots}
+          slotName={undefined}
+          slotIndex={undefined}
+        />
+
         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
           <UniformText context={context} component={component} parameterId="labelname" as="span" />
         </label>
+
         <input
           type="email"
           id="email"
