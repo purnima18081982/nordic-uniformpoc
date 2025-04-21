@@ -22,5 +22,9 @@
     "borderRadius": "var(--border-image-radius-small-radius)",
     "borderWidth": "var(--border-image-radius-small-width)",
     "borderColor": "var(--border-image-radius-small-color)"
+  },
+  ".border-tab": {
+    "borderColor": "var(--border-footer-color)",
+    "width": "var(--border-tab-width)"
   }
 }
