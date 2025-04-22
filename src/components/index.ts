@@ -6,12 +6,12 @@ import { NordicContainerComponentMapping } from './canvas/container';
 import { helloWorldMappings } from './canvas/HelloWorld';
 import { MicrosoftAuthenticatorMappings } from './canvas/MicrosoftAuthenticator';
 import { nordicButtonMappings } from './canvas/NordicButton';
+import { Notificationmailmaping } from './canvas/NotificationMail';
 import { signupStepMappings } from './canvas/SignupStep';
+import { SignupYourselfmaping } from './canvas/SignupYourself';
 import { SocialMediaSectionmaping } from './canvas/SocialMediaSection';
 import { videoPlayerMappings } from './canvas/VideoPlayer';
 import { whatWeOfferMappings } from './canvas/WhatWeOffer';
-import { Notificationmailmaping } from './canvas/NotificationMail';
-
 const componentsMapping: ComponentMapping = {
   ...cskComponentsMapping,
   ...customComponentsMapping,
@@ -25,6 +25,8 @@ const componentsMapping: ComponentMapping = {
   nordicbutton: { component: nordicButtonMappings.nordicButton },
   nordicContainer: { component: NordicContainerComponentMapping.nordicContainerComponent },
   nordicFlexItem: { component: NordicContainerComponentMapping.nordicContainerItemComponent },
+  Notificationmail: { component: Notificationmailmaping.Notificationmail },
+  signupyourself: { component: SignupYourselfmaping.SignupYourself },
 };
 
 export const componentResolver = createComponentResolver(componentsMapping);
