@@ -2,7 +2,7 @@ import { NextConfig } from 'next';
 import { withUniformConfig } from '@uniformdev/canvas-next-rsc/config';
 
 /** @type {NextConfig} */
-const nextConfig: NextConfig = {
+module.exports = {
   async headers() {
     return [
       {
@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'no-store, must-revalidate',
+            value: 'public, max-age=0, must-revalidate',
           },
         ],
       },
@@ -20,6 +20,16 @@ const nextConfig: NextConfig = {
     remotePatterns: [{ protocol: 'https', hostname: '*' }],
     deviceSizes: [320, 420, 640, 768, 1024, 1280, 1536],
   },
+};
+
+const nextConfig: NextConfig = {
+  env: {
+    UNIFORM_API_KEY: process.env.UNIFORM_API_KEY,
+    UNIFORM_PROJECT_ID: process.env.UNIFORM_PROJECT_ID,
+    UNIFORM_ENVIRONMENT: process.env.UNIFORM_ENVIRONMENT,
+  },
+  // Enable React Strict Mode
+  reactStrictMode: false,
 };
 
 export default withUniformConfig(nextConfig);
