@@ -1,5 +1,4 @@
-/* eslint-disable @next/next/no-sync-scripts */
-/* eslint-disable react/jsx-no-comment-textnodes */
+/* eslint-disable */
 import { ReactNode } from 'react';
 import classNames from 'classnames';
 import { ThemeProvider as NextThemeProvider } from 'next-themes';

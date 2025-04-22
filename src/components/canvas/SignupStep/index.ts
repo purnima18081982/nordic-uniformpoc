@@ -1,4 +1,4 @@
-import { ComponentProps } from '@uniformdev/canvas-next-rsc/component';
+import { ComponentProps, CompositionContext } from '@uniformdev/canvas-next-rsc/component';
 import { ButtonParameters } from '@/components/canvas/Button';
 import { SignupStep } from './SignupStep';
 
@@ -12,11 +12,13 @@ export type SignupStepProps = ComponentProps<{
   buttonProps?: ButtonParameters;
 };
 
-export type PasswordFieldProps = {
+export type PasswordFieldProps = ComponentProps<{
   onSubmit: () => void;
-  context: any; // Accept the full context
-  component: any; // Accept the full component
-};
+}>;
+
+export interface MyCustomContext extends CompositionContext {
+  onClick?: () => void;
+}
 
 export const signupStepMappings = {
   signupstep: SignupStep,
