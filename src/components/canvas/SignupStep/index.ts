@@ -12,6 +12,12 @@ export type SignupStepProps = ComponentProps<{
   buttonProps?: ButtonParameters;
 };
 
+export type PasswordFieldProps = {
+  onSubmit: () => void;
+  context: any; // Accept the full context
+  component: any; // Accept the full component
+};
+
 export const signupStepMappings = {
   signupstep: SignupStep,
 };
