@@ -28,6 +28,7 @@ const componentsMapping: ComponentMapping = {
   nordicFlexItem: { component: NordicContainerComponentMapping.nordicContainerItemComponent },
   emaillistview: { component: EmailListViewnmaping.EmailListView },
   nordicInput: { component: NordicInputComponentMapping.nordicInputComponent },
+  signupstep2: { component: signupStepMappings.signupsteptwo },
 };
 
 export const componentResolver = createComponentResolver(componentsMapping);
