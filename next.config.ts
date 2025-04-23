@@ -32,4 +32,6 @@ const nextConfig: NextConfig = {
   reactStrictMode: false,
 };
 
-export default withUniformConfig(nextConfig);
+module.exports = () => {
+  return withUniformConfig(nextConfig);
+};
