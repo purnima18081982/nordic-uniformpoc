@@ -1,24 +1,22 @@
-/* eslint-disable */
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { UniformText, UniformRichText, UniformSlot } from '@uniformdev/canvas-next-rsc/component';
-import { ButtonProps } from '@/components/ui/Button'; // Import ButtonProps from the correct location
 import { PasswordFieldProps } from '.';
-import Button from '@/components/ui/Button';
 
-const PasswordField: React.FC<PasswordFieldProps> = ({ onSubmit, context, component }) => {
+const PasswordField: React.FC<PasswordFieldProps> = ({ onSubmit, context, component, slots }) => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const myButtonStyles: ButtonProps = {
-    buttonColor: 'blue-500',
-    textColor: 'black',
-    textSize: 'sm',
-    hoverButtonColor: 'blue-700',
-    hoverTextColor: 'gray-100',
-    size: '3',
-    textWeight: 'normal',
-    border: 'border-1 border-blue-700',
-  };
+  // Access image parameters from Uniform and extract the URL
+  const eyeIcon = (component?.parameters?.eyeicon?.value as { fields: { url: { value: string } } }[] | undefined)?.[0]
+    ?.fields?.url?.value;
+
+  const doubleTickIcon = (
+    component?.parameters?.doubletick?.value as { fields: { url: { value: string } } }[] | undefined
+  )?.[0]?.fields?.url?.value;
+
+  const dotIcon = (component?.parameters?.dot?.value as { fields: { url: { value: string } } }[] | undefined)?.[0]
+    ?.fields?.url?.value;
 
   // Password validation rules
   const validations = {
@@ -45,16 +43,18 @@ const PasswordField: React.FC<PasswordFieldProps> = ({ onSubmit, context, compon
     return (
       <span className="mr-2 flex items-center">
         {isValid ? (
-          <img
-            src="/images/double-tick.png" // Path to the double tick image
+          <Image
+            src={doubleTickIcon || ''} // Provide a fallback value
             alt="Double Tick"
-            className="h-5 w-5"
+            width={20} // Set the width of the image
+            height={20} // Set the height of the image
           />
         ) : (
-          <img
-            src="/images/dot.png" // Path to the dot image
+          <Image
+            src={dotIcon || ''} // Provide a fallback value
             alt="Dot"
-            className="h-5 w-5"
+            width={20} // Set the width of the image
+            height={20} // Set the height of the image
           />
         )}
       </span>
@@ -62,75 +62,82 @@ const PasswordField: React.FC<PasswordFieldProps> = ({ onSubmit, context, compon
   };
 
   return (
-    <div className="mt-6">
-      <div className="mb-4">
-        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-          <UniformText context={context} component={component} parameterId="passwordlabel" as="span" />
-        </label>
-        <div className="relative">
-          <input
-            type={showPassword ? 'text' : 'password'}
-            id="password"
-            name="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            required
-          />
-          <button
-            type="button"
-            onClick={togglePasswordVisibility}
-            className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700 focus:outline-none"
-          >
-            <img src="/images/eye-icon.png" alt="Toggle Password Visibility" className="h-5 w-5" />
-          </button>
+    <>
+      <div className="mt-6">
+        <div className="mb-4">
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <UniformText context={context} component={component} parameterId="passwordlabel" as="span" />
+          </label>
+          <div className="relative w-3/4">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              id="password"
+              name="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              placeholder="Enter your password"
+              required
+            />
+            <button
+              type="button"
+              onClick={togglePasswordVisibility}
+              className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+              <Image
+                src={eyeIcon || ''} // Provide a fallback value
+                alt="Toggle Password Visibility"
+                width={20} // Set the width of the image
+                height={20} // Set the height of the image
+                className="size-5"
+              />
+            </button>
+          </div>
+        </div>
+
+        <div className="text-sm text-gray-600">
+          <p>Must include:</p>
+          <ul className="mt-2 space-y-1">
+            <li className={`flex items-center ${validations.minLength ? 'text-green-600' : 'text-gray-600'}`}>
+              {renderValidationIcon(validations.minLength)} Minimum 8 characters long
+            </li>
+            <li className={`flex items-center ${validations.hasLowercase ? 'text-green-600' : 'text-gray-600'}`}>
+              {renderValidationIcon(validations.hasLowercase)} One lowercase letter
+            </li>
+            <li className={`flex items-center ${validations.hasUppercase ? 'text-green-600' : 'text-gray-600'}`}>
+              {renderValidationIcon(validations.hasUppercase)} One uppercase letter
+            </li>
+            <li className={`flex items-center ${validations.hasNumber ? 'text-green-600' : 'text-gray-600'}`}>
+              {renderValidationIcon(validations.hasNumber)} One number
+            </li>
+            <li className={`flex items-center ${validations.hasSpecialChar ? 'text-green-600' : 'text-gray-600'}`}>
+              {renderValidationIcon(validations.hasSpecialChar)} One special character
+            </li>
+          </ul>
+        </div>
+
+        {/* Render RichText for the agreement text */}
+        <div className="mt-4 text-sm text-gray-600">
+          <UniformRichText context={context} component={component} parameterId="agreementtext" />
         </div>
       </div>
-
-      <div className="text-sm text-gray-600">
-        <p>Must include:</p>
-        <ul className="mt-2 space-y-1">
-          <li className={`flex items-center ${validations.minLength ? 'text-green-600' : 'text-gray-600'}`}>
-            {renderValidationIcon(validations.minLength)} Minimum 8 characters long
-          </li>
-          <li className={`flex items-center ${validations.hasLowercase ? 'text-green-600' : 'text-gray-600'}`}>
-            {renderValidationIcon(validations.hasLowercase)} One lowercase letter
-          </li>
-          <li className={`flex items-center ${validations.hasUppercase ? 'text-green-600' : 'text-gray-600'}`}>
-            {renderValidationIcon(validations.hasUppercase)} One uppercase letter
-          </li>
-          <li className={`flex items-center ${validations.hasNumber ? 'text-green-600' : 'text-gray-600'}`}>
-            {renderValidationIcon(validations.hasNumber)} One number
-          </li>
-          <li className={`flex items-center ${validations.hasSpecialChar ? 'text-green-600' : 'text-gray-600'}`}>
-            {renderValidationIcon(validations.hasSpecialChar)} One special character
-          </li>
-        </ul>
+      <div onClick={isValid ? onSubmit : undefined} className={` ${!isValid ? 'cursor-not-allowed opacity-50' : ''}`}>
+        <UniformSlot
+          data={{
+            ...component,
+            parameters: {
+              ...component.parameters,
+              className: {
+                type: 'text', // Specify the type expected by the parameters
+                value: `${!isValid ? 'cursor-not-allowed' : ''}`, // Add the class conditionally
+              },
+            },
+          }}
+          context={context}
+          slot={slots.submitButton}
+        />
       </div>
-
-      {/* Render RichText for the agreement text */}
-      <div className="mt-4 text-sm text-gray-600">
-        <UniformRichText context={context} component={component} parameterId="agreementtext" />
-      </div>
-
-      {/* Button with disabled state */}
-      <Button
-        {...myButtonStyles}
-        className={`px-3 py-1 ml-4 ${!isValid ? 'opacity-50 cursor-not-allowed' : ''}`}
-        onClick={isValid ? onSubmit : undefined} // Prevent onClick if not valid
-      >
-        <UniformText context={context} component={component} parameterId="buttontext" />
-      </Button>
-      {/* <UniformSlot
-        data={{
-          ...component,
-          isDisabled: !isValid,
-          onClick: isValid ? onSubmit : undefined, // Pass onClick only if valid
-        }}
-        context={context}
-        slot={{ id: 'submitButton', type: 'button' }} // Replace with a valid SlotDefinition object
-      /> */}
-    </div>
+    </>
   );
 };
 
