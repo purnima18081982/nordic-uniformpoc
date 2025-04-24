@@ -41,7 +41,7 @@ type SignupStepTwoFormComponentProps = ComponentProps<SignupStepTwoFormProps>;
 
 const SignupStepTwoForm = (props: SignupStepTwoFormComponentProps) => {
   const {
-    steptwoinputs,
+    // steptwoinputs,
     label,
     locationLabel,
     locationOptionsJson,
