@@ -1,16 +1,17 @@
 'use client';
 import { FC, useState } from 'react';
-import { UniformText } from '@uniformdev/canvas-next-rsc/component';
+import { UniformSlot, UniformText } from '@uniformdev/canvas-next-rsc/component';
 import { SignupYourselfProps } from '.';
+import RolecheckBoxes from './RolecheckBoxes';
 
-export const SignupYourself: FC<SignupYourselfProps> = ({ component, context }) => {
-  console.info('SignupYourself', component, context);
+export const SignupYourself: FC<SignupYourselfProps> = ({ component, context, slots, role }) => {
+  console.info('SignupYourself', component, context, role);
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 
   return (
-    <div>
+    <div className="w-full">
       <UniformText
         context={context}
         component={component}
@@ -18,14 +19,19 @@ export const SignupYourself: FC<SignupYourselfProps> = ({ component, context }) 
         as="h1"
         className="w-[1012px] h-[72px] font-gt-eesti text-[48px] leading-[72px] text-black font-light"
       />
-      <UniformText context={context} component={component} parameterId="step" className="text-sm text-gray-600 mb-6" />
-      <form className="flex flex-row space-x-2">
-        <div className="mb-4">
+      <UniformText
+        context={context}
+        component={component}
+        parameterId="step"
+        className="flex-none grow-0 self-stretch text-[20px] font-normal leading-[150%] text-[#00399D] mt-5"
+      />
+      <form className="flex flex-row space-x-2 mt-6">
+        <div className=" flex flex-1 flex-col mb-4">
           <label
             htmlFor="first-name"
             className="w-[494px] h-[23px] font-gt-eesti text-[15px] leading-[22px] text-black flex-none order-0 self-stretch flex-grow-0"
           >
-            First Name
+            {String(component?.parameters?.firstname.value)}
           </label>
           <input
             type="text"
@@ -36,12 +42,12 @@ export const SignupYourself: FC<SignupYourselfProps> = ({ component, context }) 
             className="mt-1 block w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
-        <div className="mb-4">
+        <div className=" flex flex-1 flex-col mb-4">
           <label
             htmlFor="last-name"
             className="w-[494px] h-[23px] font-gt-eesti text-[15px] leading-[22px] text-black flex-none order-0 self-stretch flex-grow-0"
           >
-            Last Name
+            {String(component?.parameters?.lastname.value)}
           </label>
           <input
             type="text"
@@ -66,9 +72,10 @@ export const SignupYourself: FC<SignupYourselfProps> = ({ component, context }) 
         parameterId="discription"
         className="-sm mb-6w-[1020px] font-gt-eesti h-[18px] text-[12px] leading-[18px] text-gray-500"
       />
-      <div className="flex justify-between p-3">
-        <button className="bg-white border border-gray-300 px-4 py-2">Back</button>
-        <button className="bg-blue-500 text-white border-none px-4 py-2">Continue</button>
+      <RolecheckBoxes role={role} />
+      <div className="flex justify-between p-3 pl-0 pr-0">
+        <UniformSlot data={component} context={context} slot={slots.backButton} />
+        <UniformSlot data={component} context={context} slot={slots.continueButton} />
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ export type SignupYourselfProps = ComponentProps<{
   lastname: string;
   describerole: string;
   discription: string;
-  role: { value: [] };
+  role: Array<string>;
   backButton: string;
   continueButton: string;
 }>;
