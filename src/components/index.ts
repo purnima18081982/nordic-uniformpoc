@@ -9,6 +9,7 @@ import { MicrosoftAuthenticatorMappings } from './canvas/MicrosoftAuthenticator'
 import { nordicButtonMappings } from './canvas/NordicButton';
 import { signupStepMappings } from './canvas/SignupStep';
 import { SignupStep4maping } from './canvas/SignupStep4';
+import { SignupYourselfmaping } from './canvas/SignupYourself';
 import { SocialMediaSectionmaping } from './canvas/SocialMediaSection';
 import { videoPlayerMappings } from './canvas/VideoPlayer';
 import { whatWeOfferMappings } from './canvas/WhatWeOffer';
@@ -28,6 +29,7 @@ const componentsMapping: ComponentMapping = {
   nordicFlexItem: { component: NordicContainerComponentMapping.nordicContainerItemComponent },
   emaillistview: { component: EmailListViewnmaping.EmailListView },
   signupstep4: { component: SignupStep4maping.SignupStep4 },
+  signupyourself: { component: SignupYourselfmaping.SignupYourself },
 };
 
 export const componentResolver = createComponentResolver(componentsMapping);
