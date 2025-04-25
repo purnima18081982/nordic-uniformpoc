@@ -5,7 +5,7 @@ import { SignupYourselfProps } from '.';
 import RolecheckBoxes from './RolecheckBoxes';
 
 export const SignupYourself: FC<SignupYourselfProps> = ({ component, context, slots, role }) => {
-  console.info('SignupYourself', component, context, role);
+  // console.info('SignupYourself', component, context, role);
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
