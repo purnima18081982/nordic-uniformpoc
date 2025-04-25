@@ -1,39 +1,49 @@
-import { FC } from 'react';
-import { UniformText } from '@uniformdev/canvas-next-rsc/component';
-import { ButtonProps } from '@/components/ui/Button'; // Import ButtonProps from the correct location
-import Button from '@/components/ui/Button';
-import { SignupStepProps } from '.';
-import NordicButton from '../NordicButton';
+'use client';
 
-export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = ({
-  component,
-  context,
-  buttonProps,
-  slots,
-  slotIndex,
-  slotName,
-}) => {
-  const myButtonStyles: ButtonProps = {
-    buttonColor: 'blue-500',
-    textColor: 'black',
-    textSize: 'sm',
-    hoverButtonColor: 'blue-700',
-    hoverTextColor: 'gray-100',
-    size: '3',
-    textWeight: 'normal',
-    border: 'border-1 border-blue-700',
+import { FC, useState } from 'react';
+import { UniformSlot, UniformText } from '@uniformdev/canvas-next-rsc/component';
+import { SignupStepProps } from '.';
+import PasswordField from './PasswordField';
+import Input from '../Input/Input';
+
+export const SignupStep: FC<SignupStepProps> = ({ component, context, slots }) => {
+  const [showPasswordField, setShowPasswordField] = useState(false);
+
+  const handleContinueClick = () => {
+    setShowPasswordField(true);
+  };
+
+  const handleLoginSubmit = () => {
+    //console.log('Login submitted');
   };
 
   return (
-    <div className="w-full py-4">
-      <UniformText context={context} component={component} parameterId="name" as="h1" className="text-4xl" />
-      <UniformText context={context} component={component} parameterId="description1" as="div" className="text-4xl" />
-      <UniformText context={context} component={component} parameterId="description2" as="div" className="text-4xl" />
+    <div className="w-full py-10 text-2xl">
+      <UniformText context={context} component={component} parameterId="name" as="h1" />
+      <UniformText context={context} component={component} parameterId="description1" as="div" />
+      <UniformText context={context} component={component} parameterId="description2" as="div" />
       <br />
       <div className="mb-4">
+        <Input
+          name="firstName"
+          id="firstName"
+          label="First Name"
+          placeholder="Enter First Name"
+          type="text"
+          required={true}
+          defaultValue={undefined}
+          disabled={false}
+          component={component}
+          context={context}
+          slots={slots}
+          slotName={undefined}
+          slotIndex={undefined}
+        />
+
         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
           <UniformText context={context} component={component} parameterId="labelname" as="span" />
         </label>
+
         <input
           type="email"
           id="email"
@@ -42,10 +52,20 @@ export const SignupStep: FC<SignupStepProps & { buttonProps?: ButtonProps }> = (
           placeholder="Enter your work email"
         />
       </div>
-      <Button {...(buttonProps || myButtonStyles)} className="px-3 py-1">
-        <UniformText context={context} component={component} parameterId="buttontext" />
-      </Button>
-      <NordicButton component={component} context={context} slots={slots} slotName={slotName} slotIndex={slotIndex} />
+
+      {showPasswordField && (
+        <PasswordField
+          onSubmit={handleLoginSubmit}
+          context={context}
+          component={component}
+          slots={slots}
+          slotName={undefined}
+          slotIndex={undefined}
+        />
+      )}
+      <div onClick={handleContinueClick}>
+        {!showPasswordField && <UniformSlot data={component} context={context} slot={slots.submitButton} />}
+      </div>
     </div>
   );
 };

@@ -33,13 +33,15 @@
     "uniform:publish": "uniform context manifest publish"
   },
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.4",
     "@tailwindcss/postcss": "^4.1.1",
     "@uniformdev/canvas-next-rsc": "^20.8.1",
     "@uniformdev/csk-components": "^6.0.22-alpha.1",
     "@uniformdev/design-extensions-tools": "^6.0.16",
-    "next": "^15.1.7",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "html-react-parser": "^5.2.3",
+    "next": "^15.3.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "sass": "^1.86.3"
   },
   "devDependencies": {

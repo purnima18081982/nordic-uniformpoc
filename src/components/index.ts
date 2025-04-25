@@ -3,11 +3,15 @@ import { cskComponentsMapping } from '@/components/canvas';
 import { customComponentsMapping } from '@/components/custom-canvas';
 import { customBreadcrumbsMapping } from './canvas/Breadcrumbs';
 import { NordicContainerComponentMapping } from './canvas/container';
+import { EmailListViewnmaping } from './canvas/EmailListView';
 import { helloWorldMappings } from './canvas/HelloWorld';
+import { NordicInputComponentMapping } from './canvas/Input';
 import { MicrosoftAuthenticatorMappings } from './canvas/MicrosoftAuthenticator';
 import { nordicButtonMappings } from './canvas/NordicButton';
 import { Notificationmailmaping } from './canvas/NotificationMail';
 import { signupStepMappings } from './canvas/SignupStep';
+import { SignupStep4maping } from './canvas/SignupStep4';
+import { SignupYourselfmaping } from './canvas/SignupYourself';
 import { SignupYourselfmaping } from './canvas/SignupYourself';
 import { SocialMediaSectionmaping } from './canvas/SocialMediaSection';
 import { videoPlayerMappings } from './canvas/VideoPlayer';
@@ -25,6 +29,11 @@ const componentsMapping: ComponentMapping = {
   nordicbutton: { component: nordicButtonMappings.nordicButton },
   nordicContainer: { component: NordicContainerComponentMapping.nordicContainerComponent },
   nordicFlexItem: { component: NordicContainerComponentMapping.nordicContainerItemComponent },
+  emaillistview: { component: EmailListViewnmaping.EmailListView },
+  signupstep4: { component: SignupStep4maping.SignupStep4 },
+  signupyourself: { component: SignupYourselfmaping.SignupYourself },
+  nordicInput: { component: NordicInputComponentMapping.nordicInputComponent },
+  signupstep2: { component: signupStepMappings.signupsteptwo },
   Notificationmail: { component: Notificationmailmaping.Notificationmail },
   signupyourself: { component: SignupYourselfmaping.SignupYourself },
 };

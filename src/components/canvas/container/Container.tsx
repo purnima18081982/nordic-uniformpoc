@@ -14,8 +14,6 @@ type ContainerSlot = 'containerItem';
 type ContainerProps = ComponentProps<ContainerFlexProps, ContainerSlot>;
 
 export const Container = (props: ContainerProps) => {
-  console.info('Container props:', props);
-
   return (
     <div className="mx-auto w-full max-w-7xl px-4 xl:px-0">
       <div
