@@ -1,4 +1,3 @@
-//how to pass onclick in unform slot
 'use client';
 
 import { FC, useState } from 'react';
