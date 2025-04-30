@@ -1,6 +1,7 @@
 import { ComponentProps, CompositionContext } from '@uniformdev/canvas-next-rsc/component';
 import { ButtonParameters } from '@/components/canvas/Button';
 import { SignupStep } from './SignupStep';
+import SignupStepTwoForm from './SignupStepTwoForm';
 
 export type SignupStepProps = ComponentProps<{
   name: string;
@@ -22,4 +23,5 @@ export interface MyCustomContext extends CompositionContext {
 
 export const signupStepMappings = {
   signupstep: SignupStep,
+  signupsteptwo: SignupStepTwoForm,
 };
