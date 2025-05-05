@@ -7,8 +7,8 @@ import { SignupStep4Props } from '.';
 export const SignupStep4: FC<SignupStep4Props> = ({ component, context }) => {
   // Access the emails array from the emailData object
   const [checkedItems, setCheckedItems] = useState<{ id: number }[]>([]);
+  const [selectedOption, setSelectedOption] = useState('');
   //const [allCheck, setAllCheck] = useState<boolean>();
-
   const icon = (component?.parameters?.icon?.value as { fields: { url: { value: string } } }[] | undefined)?.[0]?.fields
     ?.url?.value;
   const emailTypes =
@@ -39,7 +39,22 @@ export const SignupStep4: FC<SignupStep4Props> = ({ component, context }) => {
       setCheckedItems([...subtype]);
     }
   };
-
+  const radtiooption =
+    (
+      component?.parameters?.radio?.value as
+        | {
+            radiotype: {
+              id: number;
+              title: string;
+              shortdescription: string;
+              icon: string;
+            }[];
+          }
+        | undefined
+    )?.radiotype || [];
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setSelectedOption(event.target.value);
+  };
   return (
     <>
       <div className="w-full py-10">
@@ -128,6 +143,34 @@ export const SignupStep4: FC<SignupStep4Props> = ({ component, context }) => {
             </ul>
           );
         })}
+        <br />
+        <UniformText
+          className="text-#000000 font-sans text-2xl font-bold"
+          context={context}
+          component={component}
+          parameterId="title2"
+          as="p"
+        />
+        <br />
+        <div className="flex flex-wrap gap-4 mt-4">
+          {radtiooption?.map(data => (
+            <label
+              key={data?.id}
+              className="flex items-center space-x-2 border px-4 py-2 cursor-pointer hover:shadow-sm"
+            >
+              <input
+                type="radio"
+                name={data?.title}
+                value={data?.title}
+                id={data?.id?.toString()}
+                checked={selectedOption === data?.title}
+                onChange={handleChange}
+                className="w-4 h-4 text-blue-600 bg-blue-100 border-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              />
+              <span className="text-sm font-medium text-gray-800">{data?.title}</span>
+            </label>
+          ))}
+        </div>
       </div>
     </>
   );
