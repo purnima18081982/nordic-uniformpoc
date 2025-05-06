@@ -1,10 +1,10 @@
 'use client';
 import { FC, useState } from 'react';
-import { UniformRichText, UniformText } from '@uniformdev/canvas-next-rsc/component';
+import { UniformRichText, UniformSlot, UniformText } from '@uniformdev/canvas-next-rsc/component';
 import BaseImage from '@/components/ui/Image';
 import { SignupStep4Props } from '.';
 
-export const SignupStep4: FC<SignupStep4Props> = ({ component, context }) => {
+export const SignupStep4: FC<SignupStep4Props> = ({ component, context, slots }) => {
   // Access the emails array from the emailData object
   const [checkedItems, setCheckedItems] = useState<{ id: number }[]>([]);
   const [selectedOption, setSelectedOption] = useState('');
@@ -55,6 +55,7 @@ export const SignupStep4: FC<SignupStep4Props> = ({ component, context }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setSelectedOption(event.target.value);
   };
+  console.info(component, 'com');
   return (
     <>
       <div className="w-full py-10">
@@ -115,7 +116,7 @@ export const SignupStep4: FC<SignupStep4Props> = ({ component, context }) => {
                   type="checkbox"
                   id={data?.id?.toString()}
                   name={data?.id?.toString()}
-                  checked={checkedItems.length === data?.subtype?.length ? true : false}
+                  checked={checkedItems.length === data?.subtype?.length ? true : false || true}
                   onChange={() => toggleAll(data?.subtype || [])}
                   className="mr-2 size-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                 />
@@ -170,6 +171,10 @@ export const SignupStep4: FC<SignupStep4Props> = ({ component, context }) => {
               <span className="text-sm font-medium text-gray-800">{data?.title}</span>
             </label>
           ))}
+        </div>
+        <div className="flex justify-between p-3 pl-0 pr-0">
+          <UniformSlot data={component} context={context} slot={slots.backbutton} />
+          <UniformSlot data={component} context={context} slot={slots.submitbutton} />
         </div>
       </div>
     </>
