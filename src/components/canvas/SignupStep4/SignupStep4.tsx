@@ -116,8 +116,8 @@ export const SignupStep4: FC<SignupStep4Props> = ({ component, context, slots })
                   type="checkbox"
                   id={data?.id?.toString()}
                   name={data?.id?.toString()}
-                  checked={checkedItems.length === data?.subtype?.length ? true : false || true}
-                  onChange={() => toggleAll(data?.subtype || [])}
+                  checked={checkedItems.includes(data) || checkedItems.length === data?.subtype?.length ? true : false}
+                  onChange={() => (data?.subtype?.length > 0 ? toggleAll(data?.subtype) : toggleItem(data))}
                   className="mr-2 size-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                 />
                 <div className="px-1 pt-0">
