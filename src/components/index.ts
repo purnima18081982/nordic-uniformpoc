@@ -12,7 +12,7 @@ import { Notificationmailmaping } from './canvas/NotificationMail';
 import { signupStepMappings } from './canvas/SignupStep';
 import { SignupStep4maping } from './canvas/SignupStep4';
 import { SignupYourselfmaping } from './canvas/SignupYourself';
-import { SignupYourselfmaping } from './canvas/SignupYourself';
+// import { SignupYourselfmaping } from './canvas/SignupYourself';
 import { SocialMediaSectionmaping } from './canvas/SocialMediaSection';
 import { videoPlayerMappings } from './canvas/VideoPlayer';
 import { whatWeOfferMappings } from './canvas/WhatWeOffer';
@@ -35,7 +35,7 @@ const componentsMapping: ComponentMapping = {
   nordicInput: { component: NordicInputComponentMapping.nordicInputComponent },
   signupstep2: { component: signupStepMappings.signupsteptwo },
   Notificationmail: { component: Notificationmailmaping.Notificationmail },
-  signupyourself: { component: SignupYourselfmaping.SignupYourself },
+  // signupyourself: { component: SignupYourselfmaping.SignupYourself },
 };
 
 export const componentResolver = createComponentResolver(componentsMapping);
