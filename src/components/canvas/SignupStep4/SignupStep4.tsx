@@ -1,18 +1,16 @@
 'use client';
-import { FC } from 'react';
-import { UniformRichText, UniformText } from '@uniformdev/canvas-next-rsc/component';
+import { FC, useState } from 'react';
+import { UniformRichText, UniformSlot, UniformText } from '@uniformdev/canvas-next-rsc/component';
 import BaseImage from '@/components/ui/Image';
 import { SignupStep4Props } from '.';
 
-export const SignupStep4: FC<SignupStep4Props> = ({ component, context }) => {
+export const SignupStep4: FC<SignupStep4Props> = ({ component, context, slots }) => {
   // Access the emails array from the emailData object
+  const [checkedItems, setCheckedItems] = useState<{ id: number }[]>([]);
+  const [selectedOption, setSelectedOption] = useState('');
+  //const [allCheck, setAllCheck] = useState<boolean>();
   const icon = (component?.parameters?.icon?.value as { fields: { url: { value: string } } }[] | undefined)?.[0]?.fields
     ?.url?.value;
-  console.info(component?.parameters?.emailtype?.value, 'DES');
-  //   const emailTypes =
-  //     (component?.parameters?.emailtype?.value as
-  //       | { id: number; title: string; shortdescription: string }[]
-  //       | undefined) || [];
   const emailTypes =
     (
       component?.parameters?.emailtype?.value as
@@ -27,7 +25,37 @@ export const SignupStep4: FC<SignupStep4Props> = ({ component, context }) => {
           }
         | undefined
     )?.emailtype || [];
-  console.info(emailTypes[0]?.title, 'Email Types');
+  const toggleItem = (subtype: { id: number; title?: string; shortdescription?: string }) => {
+    if (checkedItems.includes(subtype)) {
+      setCheckedItems(checkedItems.filter(i => i !== subtype));
+    } else {
+      setCheckedItems([...checkedItems, subtype]);
+    }
+  };
+  const toggleAll = (subtype: { id: number }[]) => {
+    if (checkedItems.length === subtype.length) {
+      setCheckedItems([]);
+    } else {
+      setCheckedItems([...subtype]);
+    }
+  };
+  const radtiooption =
+    (
+      component?.parameters?.radio?.value as
+        | {
+            radiotype: {
+              id: number;
+              title: string;
+              shortdescription: string;
+              icon: string;
+            }[];
+          }
+        | undefined
+    )?.radiotype || [];
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setSelectedOption(event.target.value);
+  };
+  console.info(component, 'com');
   return (
     <>
       <div className="w-full py-10">

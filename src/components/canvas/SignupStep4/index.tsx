@@ -6,6 +6,7 @@ export type SignupStep4Props = ComponentProps<{
   icon: { value: [] };
   heading: { value: [] };
   emailtype: { emailtype: { value: [] } };
+  radio: { radiotype: { value: [] } };
 }>;
 
 export const SignupStep4maping = {
