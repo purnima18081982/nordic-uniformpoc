@@ -15,7 +15,7 @@ export default async function Home(props: PageParameters) {
         {...props}
         route={route}
         resolveComponent={componentResolver}
-        mode="server"
+        mode="static"
         resolveEmptyPlaceholder={emptyPlaceholderResolver}
       />
     </DesignExtensionsProvider>

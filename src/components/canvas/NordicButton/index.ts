@@ -23,6 +23,7 @@ export type ButtonParameters = {
   iconPosition?: BaseButtonProps['iconPosition'];
   hoverButtonColor?: string;
   hoverTextColor?: string;
+  data?: string;
 };
 
 export type ButtonAdditionalProps = {

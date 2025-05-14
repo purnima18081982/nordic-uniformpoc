@@ -4,10 +4,12 @@ import { FC, useState } from 'react';
 import { UniformSlot, UniformText } from '@uniformdev/canvas-next-rsc/component';
 import { SignupStepProps } from '.';
 import PasswordField from './PasswordField';
-import Input from '../Input/Input';
+// import Input from '../Input/Input';
 
 export const SignupStep: FC<SignupStepProps> = ({ component, context, slots }) => {
   const [showPasswordField, setShowPasswordField] = useState(false);
+
+  console.log('the context are', context);
 
   const handleContinueClick = () => {
     setShowPasswordField(true);
@@ -24,7 +26,7 @@ export const SignupStep: FC<SignupStepProps> = ({ component, context, slots }) =
       <UniformText context={context} component={component} parameterId="description2" as="div" />
       <br />
       <div className="mb-4">
-        <Input
+        {/* <Input
           name="firstName"
           id="firstName"
           label="First Name"
@@ -38,7 +40,7 @@ export const SignupStep: FC<SignupStepProps> = ({ component, context, slots }) =
           slots={slots}
           slotName={undefined}
           slotIndex={undefined}
-        />
+        /> */}
 
         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
           <UniformText context={context} component={component} parameterId="labelname" as="span" />

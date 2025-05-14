@@ -14,6 +14,8 @@ type ContainerSlot = 'containerItem';
 type ContainerProps = ComponentProps<ContainerFlexProps, ContainerSlot>;
 
 export const Container = (props: ContainerProps) => {
+  const customState = 'Mehul';
+
   return (
     <div className="mx-auto w-full max-w-7xl px-4 xl:px-0">
       <div
@@ -27,7 +29,11 @@ export const Container = (props: ContainerProps) => {
           `gap-${props.flexGap}`
         )}
       >
-        <UniformSlot data={props.component} context={props.context} slot={props.slots.containerItem} />
+        <UniformSlot
+          data={props.component}
+          context={{ ...props.context, parentData: customState }}
+          slot={props.slots.containerItem}
+        />
       </div>
     </div>
   );

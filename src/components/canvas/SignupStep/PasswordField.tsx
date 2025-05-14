@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { UniformText, UniformRichText, UniformSlot } from '@uniformdev/canvas-next-rsc/component';
 import { PasswordFieldProps } from '.';
 
-const PasswordField: React.FC<PasswordFieldProps> = ({ onSubmit, context, component, slots }) => {
+const PasswordField: React.FC<PasswordFieldProps> = ({ context, component, slots }) => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
@@ -121,7 +121,22 @@ const PasswordField: React.FC<PasswordFieldProps> = ({ onSubmit, context, compon
           <UniformRichText context={context} component={component} parameterId="agreementtext" />
         </div>
       </div>
-      <div onClick={isValid ? onSubmit : undefined} className={` ${!isValid ? 'cursor-not-allowed opacity-50' : ''}`}>
+      <div className={` ${!isValid ? 'cursor-not-allowed opacity-50' : ''}`}>
+        {/* onClick={isValid ? onSubmit : undefined} */}
+        {/* <UniformSlot
+          data={{
+            ...component,
+            parameters: {
+              ...component.parameters,
+              className: {
+                type: 'text', // Specify the type expected by the parameters
+                value: `${!isValid ? 'cursor-not-allowed' : ''}`, // Add the class conditionally
+              },
+            },
+          }}
+          context={context}
+          slot={slots.submitButton}
+        /> */}
         <UniformSlot
           data={{
             ...component,
@@ -130,6 +145,19 @@ const PasswordField: React.FC<PasswordFieldProps> = ({ onSubmit, context, compon
               className: {
                 type: 'text', // Specify the type expected by the parameters
                 value: `${!isValid ? 'cursor-not-allowed' : ''}`, // Add the class conditionally
+              },
+              onClick: {
+                type: 'function', // Specify the type as a function
+                value: () => {
+                  console.info('button clicked');
+                  debugger;
+                  if (isValid) {
+                    console.info('Button clicked!');
+                    // Add your custom logic here
+                  } else {
+                    console.info('Button is disabled.');
+                  }
+                },
               },
             },
           }}

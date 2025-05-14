@@ -10,6 +10,8 @@ type containerItemSlot = 'itemData';
 type ContainerItemPropsMain = ComponentProps<ContaineItemProps, containerItemSlot>;
 
 const ContainerItem = (props: ContainerItemPropsMain) => {
+  console.log('the props are', props.context?.parentData);
+
   return (
     <div
       className={classNames('flex', {
