@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ComponentProps } from '@uniformdev/canvas-next-rsc/component';
+import { useSignUpFormStore } from '../../../../stores/sign-up-form';
 
 type FormField = {
   id: string;
@@ -50,6 +51,8 @@ const SignupStepTwoForm = (props: SignupStepTwoFormComponentProps) => {
     peopleWorkAtYourCompanyOptions,
   } = props;
 
+  const { setFormStepNumberIncrement, setFormStepNumberDecrement } = useSignUpFormStore();
+
   const [formData, setFormData] = useState({});
 
   const handleInputChange = (key: string, value: string) => {
@@ -63,7 +66,7 @@ const SignupStepTwoForm = (props: SignupStepTwoFormComponentProps) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3 px-8 py-4 lg:gap-6">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3  py-4 lg:gap-6">
         <div className="flex flex-col gap-3 lg:flex-row lg:gap-6">
           <div className="flex w-full flex-col gap-1 lg:w-1/2">
             <label className="text-sm">{label}</label>
@@ -103,15 +106,6 @@ const SignupStepTwoForm = (props: SignupStepTwoFormComponentProps) => {
               ))}
             </select>
           </div>
-        </div>
-
-        <div className="flex w-full items-center justify-between gap-2">
-          <button className="w-1/12 bg-blue-400 px-4 py-2 text-white" type="button">
-            Cancel
-          </button>
-          <button className="w-1/12 bg-blue-400 px-4 py-2 text-white" type="submit">
-            Submit
-          </button>
         </div>
       </form>
     </>

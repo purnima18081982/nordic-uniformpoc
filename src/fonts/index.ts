@@ -1,4 +1,4 @@
-import { DM_Sans, Space_Mono } from 'next/font/google';
+import { DM_Sans, Space_Mono, Space_Grotesk } from 'next/font/google';
 
 export const dm_sans = DM_Sans({
   subsets: ['latin'],
@@ -9,12 +9,12 @@ export const dm_sans = DM_Sans({
   preload: true,
 });
 
-export const space_mono = Space_Mono({
+export const space_mono = Space_Grotesk({
   subsets: ['latin'],
   variable: '--space-mono',
   display: 'swap',
-  weight: ['400', '700'],
-  style: ['italic', 'normal'],
+  weight: ['300', '400', '700'],
+  style: ['normal'],
   preload: true,
 });
 

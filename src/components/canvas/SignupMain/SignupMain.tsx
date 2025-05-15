@@ -1,18 +1,19 @@
 'use client';
 
-import { UniformSlot } from '@uniformdev/canvas-next-rsc/component';
-import { SignupFormProvider } from '@/context/signupFormContext/SignupFormContext';
+import { FC } from 'react';
 import SignupSteps from './SignupSteps';
+import { useSignUpFormStore } from '../../../../stores/sign-up-form';
 
-// import { ComponentProps } from '@uniformdev/canvas-next-rsc/component';
-// import SignupSteps from './SignupSteps';
+interface SignupMainProps {
+  // Define the props expected by SignupSteps and any additional props here
+  [key: string]: unknown;
+}
 
-// const SignupSteps = dynamic(() => import('./SignupSteps'));
+const SignupMain: FC<SignupMainProps> = props => {
+  const { formData } = useSignUpFormStore();
 
-const SignupMain = (props: Props) => {
   return (
     <>
-      <h1>Signup Form</h1>
       <SignupSteps {...props} />
     </>
   );
