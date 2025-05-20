@@ -10,18 +10,22 @@ import '@/styles/fonts.css';
 import '@/styles/borders.css';
 import '@/styles/index.scss';
 import { customFontVariables } from '@/fonts';
-
-
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <link href="/dist/output.css" rel="stylesheet" />
+        <script type="module" src="https://nav.nordicsemi.com/api/menu"></script>
+        <script type="module" src="https://nav.nordicsemi.com/api/footer"></script>
       </head>
       <body className={customFontVariables}>
         <div className={classNames('flex flex-col mx-1 md:mx-5')}>
           <NextThemeProvider attribute="class" defaultTheme="light" enableSystem>
-            <UniformContext>{children}</UniformContext>
+            <UniformContext>
+              <global-nav />
+              {children}
+              <global-footer />
+            </UniformContext>
           </NextThemeProvider>
         </div>
       </body>
