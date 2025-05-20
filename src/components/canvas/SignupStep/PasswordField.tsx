@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { UniformText, UniformRichText, UniformSlot } from '@uniformdev/canvas-next-rsc/component';
 import { PasswordFieldProps } from '.';
+import { useSignUpFormStore } from '../../../../stores/sign-up-form';
 
-const PasswordField: React.FC<PasswordFieldProps> = ({ onSubmit, context, component, slots }) => {
-  const [password, setPassword] = useState('');
+const PasswordField: React.FC<PasswordFieldProps> = ({ context, component, slots, onSubmit }) => {
+  const { formData, setPassword, setFormStepNumberIncrement } = useSignUpFormStore();
+
   const [showPassword, setShowPassword] = useState(false);
 
   // Access image parameters from Uniform and extract the URL
@@ -20,11 +22,11 @@ const PasswordField: React.FC<PasswordFieldProps> = ({ onSubmit, context, compon
 
   // Password validation rules
   const validations = {
-    minLength: password.length >= 8,
-    hasLowercase: /[a-z]/.test(password),
-    hasUppercase: /[A-Z]/.test(password),
-    hasNumber: /\d/.test(password),
-    hasSpecialChar: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+    minLength: formData.password.length >= 8,
+    hasLowercase: /[a-z]/.test(formData.password),
+    hasUppercase: /[A-Z]/.test(formData.password),
+    hasNumber: /\d/.test(formData.password),
+    hasSpecialChar: /[!@#$%^&*(),.?":{}|<>]/.test(formData.password),
   };
 
   // Check if all validations are fulfilled
@@ -68,12 +70,12 @@ const PasswordField: React.FC<PasswordFieldProps> = ({ onSubmit, context, compon
           <label htmlFor="password" className="block text-sm font-medium text-gray-700">
             <UniformText context={context} component={component} parameterId="passwordlabel" as="span" />
           </label>
-          <div className="relative w-3/4">
+          <div className="relative w-full">
             <input
               type={showPassword ? 'text' : 'password'}
               id="password"
               name="password"
-              value={password}
+              value={formData.password}
               onChange={e => setPassword(e.target.value)}
               className="mt-1 block w-full border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="Enter your password"
@@ -121,8 +123,9 @@ const PasswordField: React.FC<PasswordFieldProps> = ({ onSubmit, context, compon
           <UniformRichText context={context} component={component} parameterId="agreementtext" />
         </div>
       </div>
-      <div onClick={isValid ? onSubmit : undefined} className={` ${!isValid ? 'cursor-not-allowed opacity-50' : ''}`}>
-        <UniformSlot
+      <div className={` ${!isValid ? 'cursor-not-allowed opacity-50' : ''}`}>
+        {/* onClick={isValid ? onSubmit : undefined} */}
+        {/* <UniformSlot
           data={{
             ...component,
             parameters: {
@@ -135,7 +138,36 @@ const PasswordField: React.FC<PasswordFieldProps> = ({ onSubmit, context, compon
           }}
           context={context}
           slot={slots.submitButton}
-        />
+        /> */}
+        <div onClick={() => onSubmit()}>
+          <UniformSlot
+            data={{
+              ...component,
+              parameters: {
+                ...component.parameters,
+                className: {
+                  type: 'text', // Specify the type expected by the parameters
+                  value: `${!isValid ? 'cursor-not-allowed' : ''}`, // Add the class conditionally
+                },
+                onClick: {
+                  type: 'function', // Specify the type as a function
+                  value: () => {
+                    console.info('button clicked');
+                    debugger;
+                    if (isValid) {
+                      console.info('Button clicked!');
+                      // Add your custom logic here
+                    } else {
+                      console.info('Button is disabled.');
+                    }
+                  },
+                },
+              },
+            }}
+            context={context}
+            slot={slots.submitButton}
+          />
+        </div>
       </div>
     </>
   );

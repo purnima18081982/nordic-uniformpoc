@@ -60,7 +60,7 @@ export const SignupStep4: FC<SignupStep4Props> = ({ component, context, slots })
     <>
       <div className="w-full py-10">
         <UniformText
-          className="text-#000000 font-300 font-sans text-5xl"
+          className="font-sans text-5xl font-light text-[#000000]"
           context={context}
           component={component}
           parameterId="heading"
@@ -69,7 +69,7 @@ export const SignupStep4: FC<SignupStep4Props> = ({ component, context, slots })
       </div>
       <div className="w-full py-10">
         <UniformText
-          className="text-#000000 font-sans text-2xl font-bold"
+          className="font-sans text-2xl font-bold text-[#000000]"
           context={context}
           component={component}
           parameterId="title"
@@ -83,7 +83,7 @@ export const SignupStep4: FC<SignupStep4Props> = ({ component, context, slots })
             </div>
             <div className="p-11 pl-2">
               <UniformRichText
-                className="text-#000000 font-300 font-sans text-xl"
+                className="font-sans text-xl font-light text-[#000000]"
                 context={context}
                 component={component}
                 parameterId="description"
@@ -94,7 +94,7 @@ export const SignupStep4: FC<SignupStep4Props> = ({ component, context, slots })
         </div>
         <br />
         <UniformText
-          className="text-#000000 font-sans text-2xl font-bold"
+          className="font-sans text-2xl font-bold text-[#000000]"
           context={context}
           component={component}
           parameterId="title1"
@@ -102,80 +102,39 @@ export const SignupStep4: FC<SignupStep4Props> = ({ component, context, slots })
         />
         <br />
         <UniformRichText
-          className="text-#000000 font-300 font-sans text-xl"
+          className="font-sans text-xl font-light text-[#000000]"
           context={context}
           component={component}
           parameterId="description1"
           as="p"
         />
-        {emailTypes.map(data => {
-          return (
-            <ul key={data?.id} className="mb-5 border border-[#D9E1E2] p-10">
-              <label htmlFor="item1" className="text-gray flex items-center">
+        {emailTypes.map(data => (
+          <ul key={data?.id} className="mb-5 border border-[#D9E1E2] p-10">
+            <label htmlFor="item1" className="flex items-center text-gray-500">
+              <input
+                type="checkbox"
+                id="item1"
+                className="mr-2 size-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+              />
+              <div className="px-1 pt-0">
+                <BaseImage src={data?.icon || '/default-icon.png'} alt={'title'} width={40} height={40} />
+              </div>
+              {data?.title}
+            </label>
+            <p className="pl-7 text-gray-300"> {data?.shortdescription}</p>
+            {data?.subtype?.map((subtype, index) => (
+              <li key={index} className="items-center pl-10">
                 <input
                   type="checkbox"
-                  id={data?.id?.toString()}
-                  name={data?.id?.toString()}
-                  checked={checkedItems.includes(data) || checkedItems.length === data?.subtype?.length ? true : false}
-                  onChange={() => (data?.subtype?.length > 0 ? toggleAll(data?.subtype) : toggleItem(data))}
+                  id="item1"
                   className="mr-2 size-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                 />
-                <div className="px-1 pt-0">
-                  <BaseImage src={data?.icon || '/default-icon.png'} alt={'title'} width={40} height={40} />
-                </div>
-                {data?.title}
-              </label>
-              <p className="pl-7 text-gray-300"> {data?.shortdescription}</p>
-              {data?.subtype?.map(subtype => {
-                return (
-                  <li key={subtype?.id} className="items-center pl-10">
-                    <input
-                      type="checkbox"
-                      id={subtype?.id?.toString()}
-                      name={subtype?.id?.toString()}
-                      checked={checkedItems.includes(subtype)}
-                      onChange={() => toggleItem(subtype)}
-                      className="mr-2 size-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                    />
-                    {subtype?.title}
-                  </li>
-                );
-              })}
-            </ul>
-          );
-        })}
-        <br />
-        <UniformText
-          className="text-#000000 font-sans text-2xl font-bold"
-          context={context}
-          component={component}
-          parameterId="title2"
-          as="p"
-        />
-        <br />
-        <div className="flex flex-wrap gap-4 mt-4">
-          {radtiooption?.map(data => (
-            <label
-              key={data?.id}
-              className="flex items-center space-x-2 border px-4 py-2 cursor-pointer hover:shadow-sm"
-            >
-              <input
-                type="radio"
-                name={data?.title}
-                value={data?.title}
-                id={data?.id?.toString()}
-                checked={selectedOption === data?.title}
-                onChange={handleChange}
-                className="w-4 h-4 text-blue-600 bg-blue-100 border-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-              />
-              <span className="text-sm font-medium text-gray-800">{data?.title}</span>
-            </label>
-          ))}
-        </div>
-        <div className="flex justify-between p-3 pl-0 pr-0">
-          <UniformSlot data={component} context={context} slot={slots.backbutton} />
-          <UniformSlot data={component} context={context} slot={slots.submitbutton} />
-        </div>
+                {subtype?.title}
+                <p className="pl-7 text-gray-300"> {subtype?.shortdescription}</p>
+              </li>
+            ))}
+          </ul>
+        ))}
       </div>
     </>
   );

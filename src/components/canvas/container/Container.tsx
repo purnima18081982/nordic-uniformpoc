@@ -27,7 +27,7 @@ export const Container = (props: ContainerProps) => {
           `gap-${props.flexGap}`
         )}
       >
-        <UniformSlot data={props.component} context={props.context} slot={props.slots.containerItem} />
+        <UniformSlot data={props.component} context={{ ...props.context }} slot={props.slots.containerItem} />
       </div>
     </div>
   );
