@@ -58,16 +58,7 @@ export const SignupStep4: FC<SignupStep4Props> = ({ component, context, slots })
   console.info(component, 'com');
   return (
     <>
-      <div className="w-full py-10">
-        <UniformText
-          className="font-sans text-5xl font-light text-[#000000]"
-          context={context}
-          component={component}
-          parameterId="heading"
-          as="p"
-        />
-      </div>
-      <div className="w-full py-10">
+      <div className="w-full py-4">
         <UniformText
           className="font-sans text-2xl font-bold text-[#000000]"
           context={context}

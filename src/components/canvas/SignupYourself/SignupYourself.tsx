@@ -12,19 +12,6 @@ export const SignupYourself: FC<SignupYourselfProps> = ({ component, context, sl
 
   return (
     <div className="w-full">
-      <UniformText
-        context={context}
-        component={component}
-        parameterId="intro"
-        as="h1"
-        className=" h-[72px] w-[1012px] text-[48px] font-light leading-[72px] text-black"
-      />
-      <UniformText
-        context={context}
-        component={component}
-        parameterId="step"
-        className="mt-5 flex-none grow-0 self-stretch text-[20px] font-normal leading-[150%] text-[#00399D]"
-      />
       <form className="mt-6 flex flex-row space-x-2">
         <div className=" mb-4 flex flex-1 flex-col">
           <label
@@ -73,10 +60,10 @@ export const SignupYourself: FC<SignupYourselfProps> = ({ component, context, sl
         className="mb-6 h-[18px] w-[1020px] text-[12px] leading-[18px] text-gray-500"
       />
       <RolecheckBoxes role={role} />
-      <div className="flex justify-between p-3 px-0">
+      {/* <div className="flex justify-between p-3 px-0">
         <UniformSlot data={component} context={context} slot={slots.backButton} />
         <UniformSlot data={component} context={context} slot={slots.continueButton} />
-      </div>
+      </div> */}
     </div>
   );
 };

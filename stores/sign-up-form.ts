@@ -18,7 +18,7 @@ interface SignUpFormActions {
 }
 
 export const useSignUpFormStore = create<SignUpFormActions>(set => ({
-  formStepNumber: 1,
+  formStepNumber: 0,
   formData: {
     email: '',
     password: '',
